@@ -120,6 +120,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-DBConfig.java
+ApplicationConfig.java
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,eclipse,java

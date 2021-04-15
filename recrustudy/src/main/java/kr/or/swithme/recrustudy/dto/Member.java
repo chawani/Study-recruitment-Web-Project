@@ -1,45 +1,72 @@
 package kr.or.swithme.recrustudy.dto;
 
+import java.util.Date;
+
 public class Member {
-	private String member_id;
-	private String password;
-	private String nickname;
-	private float grade;
-	private String email;
-	public String getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	public float getGrade() {
-		return grade;
-	}
-	public void setGrade(float grade) {
-		this.grade = grade;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	@Override
-	public String toString() {
-		return "Member [member_id=" + member_id + ", password=" + password + ", nickname=" + nickname + ", grade="
-				+ grade + ", email=" + email + "]";
-	}
-	
+    private Long id;
+    private String name;
+    private String password;
+    private String email;
+    private Date createDate;
+    private Date modifyDate;
+
+    public Member() {
+        createDate = new Date();
+        modifyDate = new Date();
+    }
+
+    public Member(Long id, String name, String password, String email) {
+        this();
+        this.name = name;
+        this.password = password;
+        this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 }
