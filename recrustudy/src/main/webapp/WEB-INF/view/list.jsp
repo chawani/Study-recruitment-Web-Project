@@ -8,12 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<label>글번호</label>&nbsp; &nbsp; &nbsp; &nbsp;
+<label>작성자 번호</label>&nbsp; &nbsp; &nbsp; &nbsp;
+<label>제목</label>
+<hr>
 <c:forEach items="${list}" var="post">
-${post.post_id }<br>
-${post.member_id }<br>
-${post.title }<br>
+${post.post_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+${post.title }
+<hr>
 </c:forEach>
 <a href='<c:url value='/write'/>' role="button" class="btn btn-outline-info">글쓰기</a>
+<a href='<c:url value='/members/loginform'/>' role="button" class="btn btn-login">로그인</a>
+<a href='<c:url value='/members/joinform'/>' role="button" class="btn btn-join">회원가입</a>
 <br>
 </body>
 </html>

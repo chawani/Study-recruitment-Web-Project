@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Post {
 	private Long post_id;
-	private String member_id;
+	private Long member_id;
 	private String category;
 	private String region;
 	private String title;
@@ -21,10 +21,10 @@ public class Post {
 	public void setPost_id(Long post_id) {
 		this.post_id = post_id;
 	}
-	public String getMember_id() {
+	public Long getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(String member_id) {
+	public void setMember_id(Long member_id) {
 		this.member_id = member_id;
 	}
 	public String getCategory() {

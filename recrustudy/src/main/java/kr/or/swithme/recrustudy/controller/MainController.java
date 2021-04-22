@@ -9,7 +9,7 @@ public class MainController {
     @RequestMapping("/main")
     @ResponseBody
     public String main(){
-        return "main page";
+        return "redirect:/list";
     }
 
     @RequestMapping("/securepage")

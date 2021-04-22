@@ -37,5 +37,10 @@ public class PostDao {
     		params.put("limit", limit);
         return jdbc.query(SELECT_PAGING, params, rowMapper);
     }
+    
+    public Long insert(Post post) {
+    	SqlParameterSource params=new BeanPropertySqlParameterSource(post);
+    	return insertAction.executeAndReturnKey(params).longValue();
+    }
 
 }
