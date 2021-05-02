@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -42,5 +43,13 @@ public class PostDao {
     	SqlParameterSource params=new BeanPropertySqlParameterSource(post);
     	return insertAction.executeAndReturnKey(params).longValue();
     }
-
+    
+    public Post select(Integer id) {
+		try {
+			Map<String, ?> params = Collections.singletonMap("post_id", id);
+			return jdbc.queryForObject(SELECT_BY_ID, params, rowMapper);
+		} catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
 }

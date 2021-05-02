@@ -39,4 +39,10 @@ public class PostServiceImpl implements PostService{
 		post.setPost_id(id);
 		return post;
 	}
+	
+	@Override
+	public Post getPost(Integer document) {
+		Post post=postDao.select(document);
+		return post;
+	}
 }

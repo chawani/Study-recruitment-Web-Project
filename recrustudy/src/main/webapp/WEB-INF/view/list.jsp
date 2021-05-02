@@ -15,7 +15,7 @@
 <c:forEach items="${list}" var="post">
 ${post.post_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 ${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-${post.title }
+<a href="detail?document=${post.post_id}">${post.title}</a>
 <hr>
 </c:forEach>
 <a href='<c:url value='/write'/>' role="button" class="btn btn-outline-info">글쓰기</a>
