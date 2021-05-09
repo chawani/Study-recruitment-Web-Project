@@ -52,4 +52,21 @@ public class PostDao {
 			return null;
 		}
 	}
+    
+    public List<Post> selectMemberPost(Long id) {
+    	try {
+			Map<String, ?> params = Collections.singletonMap("member_id", id);
+			return jdbc.query(SELECT_BY_MEMBER, params, rowMapper);
+		} catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+    }
+    public List<Post> selectCommentPost(Long id) {
+    	try {
+			Map<String, ?> params = Collections.singletonMap("member_id", id);
+			return jdbc.query(SELECT_BY_COMMENT, params, rowMapper);
+		} catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+    }
 }

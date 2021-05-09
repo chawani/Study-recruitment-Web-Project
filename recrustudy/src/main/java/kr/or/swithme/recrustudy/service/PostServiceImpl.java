@@ -45,4 +45,17 @@ public class PostServiceImpl implements PostService{
 		Post post=postDao.select(document);
 		return post;
 	}
+	
+	public List<Post> getMemberPost(Principal principal) {
+		String loginId = principal.getName();
+        Member member = memberservice.getMemberByEmail(loginId);
+		List<Post> list=postDao.selectMemberPost(member.getId());
+		return list;
+	}
+	public List<Post> getCommentPost(Principal principal) {
+		String loginId = principal.getName();
+        Member member = memberservice.getMemberByEmail(loginId);
+		List<Post> list=postDao.selectCommentPost(member.getId());
+		return list;
+	}
 }

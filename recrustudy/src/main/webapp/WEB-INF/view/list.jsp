@@ -18,9 +18,10 @@ ${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 <a href="detail?document=${post.post_id}">${post.title}</a>
 <hr>
 </c:forEach>
-<a href='<c:url value='/write'/>' role="button" class="btn btn-outline-info">글쓰기</a>
-<a href='<c:url value='/members/loginform'/>' role="button" class="btn btn-login">로그인</a>
-<a href='<c:url value='/members/joinform'/>' role="button" class="btn btn-join">회원가입</a>
+<a href='<c:url value='/write'/>' role="button">글쓰기</a>
+<a href='<c:url value='/members/loginform'/>' role="button">로그인</a>
+<a href='<c:url value='/members/joinform'/>' role="button">회원가입</a>
+<a href='<c:url value='/members/mypage'/>' role="button">마이페이지</a>
 <br>
 </body>
 </html>

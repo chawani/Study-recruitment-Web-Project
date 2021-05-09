@@ -53,7 +53,6 @@ public class PostController {
     public String detail(@RequestParam("document") Integer document, Model model ) throws Exception{
 		Post post = postService.getPost(document);
 		List<Comment> comment = commentService.getComments(document);
-		System.out.println("출력:"+comment.get(0).getComment_content());
         model.addAttribute("post",post);
         model.addAttribute("comment",comment);
         return "/detailpage";

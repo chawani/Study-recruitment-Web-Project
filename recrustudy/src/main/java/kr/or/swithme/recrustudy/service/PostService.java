@@ -11,5 +11,7 @@ public interface PostService {
 	public List<Post> getPosts(Integer start);
 	public Post getPost(Integer document);
 	public Post addPost(Post post,Principal principal);
+	public List<Post> getMemberPost(Principal principal);
+	public List<Post> getCommentPost(Principal principal);
 //	public int getCount();
 }

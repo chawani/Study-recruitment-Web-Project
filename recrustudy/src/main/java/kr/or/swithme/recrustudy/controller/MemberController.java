@@ -1,6 +1,7 @@
 package kr.or.swithme.recrustudy.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.swithme.recrustudy.dto.Member;
+import kr.or.swithme.recrustudy.dto.Post;
 import kr.or.swithme.recrustudy.service.MemberService;
+import kr.or.swithme.recrustudy.service.PostService;
 
 @Controller
 @RequestMapping(path = "/members")
@@ -20,10 +23,12 @@ public class MemberController {
     // 스프링 컨테이너가 생성자를 통해 자동으로 주입한다.
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
+    private final PostService postService;
 
-    public MemberController(MemberService memberService, PasswordEncoder passwordEncoder){
+    public MemberController(MemberService memberService, PasswordEncoder passwordEncoder,PostService postService){
         this.memberService = memberService;
         this.passwordEncoder = passwordEncoder;
+        this.postService=postService;
     }
 
     @GetMapping("/loginform")
@@ -49,12 +54,15 @@ public class MemberController {
         return "redirect:/list";
     }
     
-    @GetMapping("/memberinfo")
-    public String memberInfo(Principal principal, ModelMap modelMap){
+    @GetMapping("/mypage")
+    public String mypage(Principal principal, ModelMap modelMap){
         String loginId = principal.getName();
         Member member = memberService.getMemberByEmail(loginId);
         modelMap.addAttribute("member", member);
-
-        return "members/memberinfo";
+        List<Post> list=postService.getMemberPost(principal);
+        List<Post> clist=postService.getCommentPost(principal);
+        modelMap.addAttribute("list",list);
+        modelMap.addAttribute("clist",clist);
+        return "members/mypage";
     }
 }
