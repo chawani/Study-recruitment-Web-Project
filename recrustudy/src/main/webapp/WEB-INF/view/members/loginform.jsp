@@ -24,6 +24,7 @@
             <input type="submit" value="로그인">
           </div>
         </form>
+        <button onClick="parent.location.href='/recrustudy/list'">목록으로</button>
       </div>
     </div>
   </body>

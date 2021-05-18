@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.swithme.recrustudy.dao.MemberDao;
 import kr.or.swithme.recrustudy.dto.*;
 import kr.or.swithme.recrustudy.service.CommentService;
 import kr.or.swithme.recrustudy.service.PostService;
@@ -27,6 +28,8 @@ public class PostController {
 	PostService postService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	MemberDao memberDao;
 	
 	@GetMapping(path="/list")
 	public String list(ModelMap model) {
@@ -50,9 +53,15 @@ public class PostController {
 	}
 	
 	@RequestMapping(value ="/detail", method = RequestMethod.GET)
-    public String detail(@RequestParam("document") Integer document, Model model ) throws Exception{
+    public String detail(@RequestParam("document") Integer document, Model model, Principal principal) throws Exception{
 		Post post = postService.getPost(document);
 		List<Comment> comment = commentService.getComments(document);
+		Member member=memberDao.getMemberByEmail(principal.getName());
+		boolean check=false;
+		if (member.getId()==post.getMember_id()){
+			check=true;
+		}
+		model.addAttribute("writer",check);
         model.addAttribute("post",post);
         model.addAttribute("comment",comment);
         return "/detailpage";
@@ -62,5 +71,11 @@ public class PostController {
 	public String commentWrite(@RequestParam("document") Long document, @ModelAttribute Comment comment, Principal principal) {
 		commentService.addComment(comment,principal,document);
 		return "redirect:/detail?document="+document;
+	}
+	
+	@RequestMapping(value="/accept",method = RequestMethod.POST)
+	public String commentAccept(@RequestParam("comment") Long comment, HttpServletRequest request) {
+		//구현
+	    return "redirect:/list";
 	}
 }

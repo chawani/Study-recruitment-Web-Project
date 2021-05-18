@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,15 +58,20 @@
 <c:forEach items="${comment}" var="reply">
 작성자: ${reply.member_id }<br>
 ${reply.comment_content }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-${reply.comment_date}
+${reply.comment_date}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+<c:if test="${writer eq true}">
+<button onClick="location.href='/recrustudy/accept?comment=${reply.comment_id}'">수락하기</button>
+</c:if>
 <hr>
 </c:forEach>
 	<br>
 	<br>
+	<c:if test="${writer eq false}">
 	<form method="post" action="/recrustudy/writeComment?document=${post.post_id}">
 	댓글 달기:
 		<textarea name="comment_content" cols="60" rows="6"></textarea>
 		<br> <input type="submit" value="등록">
 	</form>
+	</c:if>
 </body>
 </html>
