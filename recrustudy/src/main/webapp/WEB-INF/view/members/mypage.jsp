@@ -19,6 +19,8 @@ ${member.id}님의 <br>
 ${post.post_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 ${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 <a href="http://localhost:8082/recrustudy/detail?document=${post.post_id}">${post.title}</a>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+<button onClick="location.href='/recrustudy/group?document=${post.post_id}'">관리</button>
 <hr>
 </c:forEach>
 <br>

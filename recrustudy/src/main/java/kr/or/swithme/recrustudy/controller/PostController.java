@@ -73,9 +73,21 @@ public class PostController {
 		return "redirect:/detail?document="+document;
 	}
 	
-	@RequestMapping(value="/accept",method = RequestMethod.POST)
-	public String commentAccept(@RequestParam("comment") Long comment, HttpServletRequest request) {
-		//구현
-	    return "redirect:/list";
+	@RequestMapping(value="/accept",method = RequestMethod.GET)
+	public String commentAccept(@RequestParam("comment") Integer comment,@RequestParam("document") Long document, Model model) {
+		commentService.acceptComment(comment);
+	    return "redirect:/detail?document="+document;
+	}
+	@RequestMapping(value="/delete_accept",method = RequestMethod.GET)
+	public String commentAcceptDelete(@RequestParam("comment") Integer comment,@RequestParam("document") Long document, Model model) {
+		commentService.delete_acceptComment(comment);
+	    return "redirect:/detail?document="+document;
+	}
+	
+	@RequestMapping(value="/group",method = RequestMethod.GET)
+	public String groupSetting(@RequestParam("document") Integer document, Model model) {
+		List<Comment> list=commentService.search_acceptComment(document);
+		model.addAttribute("list",list);
+	    return "/groupsetting";
 	}
 }

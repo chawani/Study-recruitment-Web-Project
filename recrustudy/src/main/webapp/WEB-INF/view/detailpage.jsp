@@ -59,8 +59,11 @@
 작성자: ${reply.member_id }<br>
 ${reply.comment_content }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 ${reply.comment_date}&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-<c:if test="${writer eq true}">
-<button onClick="location.href='/recrustudy/accept?comment=${reply.comment_id}'">수락하기</button>
+<c:if test="${writer eq true && reply.check_join eq false}">
+<button onClick="location.href='/recrustudy/accept?comment=${reply.comment_id}&document=${post.post_id}'">수락하기</button>
+</c:if>
+<c:if test="${writer eq true && reply.check_join eq true}">
+<button onClick="location.href='/recrustudy/delete_accept?comment=${reply.comment_id}&document=${post.post_id}'">취소하기</button>
 </c:if>
 <hr>
 </c:forEach>

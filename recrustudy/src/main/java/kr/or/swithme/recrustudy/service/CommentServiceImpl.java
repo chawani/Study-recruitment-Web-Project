@@ -42,4 +42,24 @@ public class CommentServiceImpl implements CommentService {
 		comment.setComment_id(id);
 		return comment;
 	}
+	
+	@Override
+	public int acceptComment(int comment) {
+		return commentDao.accept(comment);
+	}
+	@Override
+	public Integer acceptCheck(int comment) {
+		return commentDao.accept_check(comment);
+	}
+	@Override
+	public int delete_acceptComment(int comment) {
+		return commentDao.delete_accept_check(comment);
+	}
+	
+	@Override
+	@Transactional
+	public List<Comment> search_acceptComment(Integer document){
+		List<Comment> list = commentDao.search_accept(document);
+		return list;
+	}
 }
