@@ -15,6 +15,7 @@ ${list.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 <button onClick="location.href='/recrustudy/delete_accept?comment=${list.comment_id}&document=${list.post_id}'">취소하기</button>
 <br>
 </c:forEach>
-<button>스터디 시작하기</button>
+<br>
+<button onClick="location.href='/recrustudy/start?document=${list[0].post_id}'">스터디 시작하기</button>
 </body>
 </html>

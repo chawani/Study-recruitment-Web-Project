@@ -21,6 +21,7 @@ import kr.or.swithme.recrustudy.dao.MemberDao;
 import kr.or.swithme.recrustudy.dto.*;
 import kr.or.swithme.recrustudy.service.CommentService;
 import kr.or.swithme.recrustudy.service.PostService;
+import kr.or.swithme.recrustudy.service.StudyGroupService;
 
 @Controller
 public class PostController {
@@ -28,6 +29,8 @@ public class PostController {
 	PostService postService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	StudyGroupService studyGroupService;
 	@Autowired
 	MemberDao memberDao;
 	
@@ -89,5 +92,11 @@ public class PostController {
 		List<Comment> list=commentService.search_acceptComment(document);
 		model.addAttribute("list",list);
 	    return "/groupsetting";
+	}
+	
+	@RequestMapping(value="/start",method = RequestMethod.GET)
+	public String start(@RequestParam("document") Integer document) {
+		studyGroupService.startStudy(document);
+	    return "redirect:/studygroup?document="+document;
 	}
 }

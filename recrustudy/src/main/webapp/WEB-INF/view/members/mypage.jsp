@@ -20,7 +20,14 @@ ${post.post_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 ${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 <a href="http://localhost:8082/recrustudy/detail?document=${post.post_id}">${post.title}</a>
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+<c:choose>
+    <c:when test="${empty post.studygroup_id}">
 <button onClick="location.href='/recrustudy/group?document=${post.post_id}'">관리</button>
+    </c:when>
+    <c:otherwise>
+<button onClick="location.href='/recrustudy/studygroup?=${post.post_id}'">관리</button>
+    </c:otherwise>
+</c:choose>
 <hr>
 </c:forEach>
 <br>
