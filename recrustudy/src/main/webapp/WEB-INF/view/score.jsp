@@ -28,6 +28,13 @@
   <input type='radio' name='star' value='five' />5점
 	</td></td>
 	</tr><!-- 두번째 줄 끝 -->
+	<td>팀원3</td>
+	    <td><input type='radio' name='star' value='one' />1점
+  <input type='radio' name='star' value='two' />2점
+  <input type='radio' name='star' value='three' />3점
+  <input type='radio' name='star' value='four' />4점
+  <input type='radio' name='star' value='five' />5점
+	</td></tr>
     </table>
 </body>
 </html>
