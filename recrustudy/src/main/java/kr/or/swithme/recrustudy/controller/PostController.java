@@ -97,6 +97,6 @@ public class PostController {
 	@RequestMapping(value="/start",method = RequestMethod.GET)
 	public String start(@RequestParam("document") Integer document) {
 		studyGroupService.startStudy(document);
-	    return "redirect:/studygroup?document="+document;
+	    return "redirect:/mypage";
 	}
 }

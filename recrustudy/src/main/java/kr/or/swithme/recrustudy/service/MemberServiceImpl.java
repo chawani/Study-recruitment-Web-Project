@@ -7,6 +7,7 @@ import kr.or.swithme.recrustudy.dao.MemberDao;
 import kr.or.swithme.recrustudy.dao.MemberRoleDao;
 import kr.or.swithme.recrustudy.dto.Member;
 import kr.or.swithme.recrustudy.dto.MemberRole;
+import kr.or.swithme.recrustudy.dto.Post;
 import kr.or.swithme.recrustudy.service.security.UserEntity;
 import kr.or.swithme.recrustudy.service.security.UserRoleEntity;
 
@@ -61,7 +62,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
     @Override
+    @Transactional
 	public Member getMemberByEmail(String email) {
         return memberDao.getMemberByEmail(email);
 	}
+    
+    @Override
+    @Transactional
+    public List<Member> getMembers(Long id){
+    	List<Member> list = memberDao.select(id);
+    	return list;
+    }
 }

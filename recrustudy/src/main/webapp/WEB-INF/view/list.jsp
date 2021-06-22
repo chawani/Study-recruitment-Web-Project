@@ -4,24 +4,35 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<script src="/resources/js/bootstrap.js"></script>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-<label>글번호</label>&nbsp; &nbsp; &nbsp; &nbsp;
-<label>작성자 번호</label>&nbsp; &nbsp; &nbsp; &nbsp;
-<label>제목</label>
-<hr>
-<c:forEach items="${list}" var="post">
-${post.post_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-${post.member_id }&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-<a href="detail?document=${post.post_id}">${post.title}</a>
-<hr>
-</c:forEach>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">글번호</th>
+      <th scope="col">작성자 번호</th>
+      <th scope="col">제목</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<c:forEach items="${list}" var="post">
+    <tr class="table-light">
+      <th scope="row">${post.post_id }</th>
+      <td>${post.member_id }</td>
+      <td><a href="detail?document=${post.post_id}">${post.title}</a></td>
+    </c:forEach>
+    </tr>
+  </tbody>
+</table>
+
 <a href='<c:url value='/write'/>' role="button">글쓰기</a>
+
 <sec:authorize access="isAnonymous()"> 
-<a href='<c:url value='/members/loginform'/>' role="button">로그인</a>
+<button type="button" class="btn btn-info" onclick="location.href='recurstudy/members/loginform'">로그인</button>
 </sec:authorize> 
 <sec:authorize access="isAuthenticated()">
 <a href='<c:url value='/logout'/>' role="button">로그아웃</a>

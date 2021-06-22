@@ -43,7 +43,7 @@
 <input type="text" name="total_number" placeholder="모집인원을 설정해주세요.">
 <br>
 <label>스터디 기간</label>
-<input type="text" name="study_period" placeholder="스터디 기간을 입력해주세요.">
+<input type="text" name="study_period" placeholder="스터디 기간을 입력해주세요.">주
 <br>
 <label>제목</label>
 <input type="text" name="title" placeholder="제목을 작성해주세요.">

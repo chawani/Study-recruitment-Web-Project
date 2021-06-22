@@ -9,8 +9,10 @@ public class Member {
     private String email;
     private Date createDate;
     private Date modifyDate;
-
-    public Member() {
+    private double grade;
+    private int amount;
+    
+	public Member() {
         createDate = new Date();
         modifyDate = new Date();
     }
@@ -69,4 +71,20 @@ public class Member {
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
     }
+    
+    public double getGrade() {
+		return grade;
+	}
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 }

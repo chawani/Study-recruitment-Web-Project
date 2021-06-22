@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import static kr.or.swithme.recrustudy.dao.PostDaoSqls.SELECT_BY_COMMENT;
 import static kr.or.swithme.recrustudy.dao.StudyGroupDaoSqls.*;
 
 @Repository
