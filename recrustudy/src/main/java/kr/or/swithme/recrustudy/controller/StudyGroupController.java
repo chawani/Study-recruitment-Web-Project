@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.or.swithme.recrustudy.dao.MemberDao;
 import kr.or.swithme.recrustudy.dto.Comment;
 import kr.or.swithme.recrustudy.dto.Member;
 import kr.or.swithme.recrustudy.dto.Post;
@@ -30,9 +31,11 @@ public class StudyGroupController {
 	MemberService memberService;
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	MemberDao memberDao;
 	
 	@RequestMapping(value="/studygroup",method = RequestMethod.GET)
-	public String review(@RequestParam("document") Integer document, Model model) {
+	public String review(@RequestParam("document") Integer document, Model model, Principal principal) {
 		Post post = postService.getPost(document);
 		int period=Integer.parseInt(post.getStudy_period());
 		model.addAttribute("post_id",post.getPost_id());
@@ -41,6 +44,8 @@ public class StudyGroupController {
 		model.addAttribute("rlist",rlist);
 		List<Member> mlist=memberService.getMembers(post.getStudygroup_id());
 		model.addAttribute("mlist",mlist);
+		Member member=memberDao.getMemberByEmail(principal.getName());
+		model.addAttribute("me",member.getId());
 	    return "/review";
 	}
 	

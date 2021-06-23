@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/recrustudy/postInsert" method="post">
+<form align="center" action="/recrustudy/postInsert" method="post">
 <select name="category">
     <option value="">스터디 카테고리 선택</option>
     <option value="어학">어학</option>
