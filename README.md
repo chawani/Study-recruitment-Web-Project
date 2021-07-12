@@ -3,6 +3,16 @@
 ### 프로젝트 주제
 >각종 분야별/지역별 STUDY 모집 웹사이트📝
 
+## 0.
+* 기술 스택<br>
+Web Server: Apache Tomcat<br>
+Database: MySQL<br>
+Backend: Java, Spring Framework<br>
+Frontend: Bootstrap<br>
+* 프로젝트 기간 : 2020.03~
+* 프로젝트 참여 인원 : 1인
+
+
 ## 1. 주요 기능
 >
 - 회원 가입 & 로그인 기능
